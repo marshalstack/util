@@ -1,0 +1,45 @@
+{
+    "name": "marshal/util",
+    "description": "Utilities package for Marshal",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Marshal\\Util\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Collins Pamba",
+            "email": "collinspamba@outlook.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../eventmanager"
+        }
+    ],
+    "require": {
+        "doctrine/dbal": "^4.3",
+        "guzzlehttp/guzzle": "^7.9",
+        "laminas/laminas-config-aggregator": "^1.18",
+        "laminas/laminas-i18n": "^2.30",
+        "laminas/laminas-inputfilter": "^2.33",
+        "laminas/laminas-servicemanager": "^3.23",
+        "league/flysystem": "^3.30",
+        "loophp/collection": "^7.6",
+        "marshal/eventmanager": "dev-master",
+        "mezzio/mezzio-fastroute": "^3.13",
+        "mezzio/mezzio-helpers": "^5.18",
+        "mezzio/mezzio-session": "^1.16",
+        "monolog/monolog": "^3.9",
+        "psr/http-message": "^2.0",
+        "psr/http-server-middleware": "^1.0"
+    }
+}
