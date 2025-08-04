@@ -14,7 +14,7 @@ final class ConnectionFactory
     {
     }
 
-    public function getConnection(string $database = 'main'): Connection
+    public function getConnection(string $database = "marshal"): Connection
     {
         if (! \array_key_exists($database, $this->config)) {
             throw new \InvalidArgumentException(\sprintf(
@@ -24,8 +24,16 @@ final class ConnectionFactory
         }
 
         if (! \array_key_exists($database, $this->connections)) {
+            // wrap the DBALConnection
             $this->config[$database]['wrapperClass'] = Connection::class;
-            $this->connections[$database] = DriverManager::getConnection($this->config[$database]);
+            $connection = DriverManager::getConnection($this->config[$database]);
+
+            // add custom types
+            foreach ($this->config[$database]['types'] ?? [] as $typeName => $typeClass) {
+                $connection->getDatabasePlatform()->registerDoctrineTypeMapping($typeName, $typeClass);
+            }
+
+            $this->connections[$database] = $connection;
         }
 
         return $this->connections[$database];
