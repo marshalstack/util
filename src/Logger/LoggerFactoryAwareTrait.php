@@ -10,7 +10,7 @@ namespace Marshal\Util\Logger;
 
 use Psr\Log\LoggerInterface;
 
-trait LoggerFactoryTrait
+trait LoggerFactoryAwareTrait
 {
     private LoggerFactory $loggerFactory;
 
